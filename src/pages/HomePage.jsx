@@ -1,226 +1,264 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { AlertCircle, Search, ArrowRight, FileText, Target, CheckCircle, Sparkles, Shield, Zap } from 'lucide-react';
-import Card from '../components/Card';
-import Button from '../components/Button';
+import { AlertCircle, Search, ArrowRight, FileText, Target, CheckCircle, Shield, Zap, Clock } from 'lucide-react';
 
 const HomePage = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#E0D7FF] via-white to-[#FFD233]/20">
+        <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
+            <section className="relative max-w-6xl mx-auto px-6 pt-24 pb-20">
+                {/* Subtle background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/30 via-transparent to-transparent pointer-events-none"></div>
+
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, type: "spring" }}
-                    className="text-center"
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative text-center"
                 >
-                    <h1 className="text-5xl md:text-7xl font-bold text-[#2B1B60] mb-6 leading-tight">
-                        Welcome to <span className="text-[#7C5DFA]">AssetHub</span>
+                    {/* Badge */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
+                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 rounded-full mb-8"
+                    >
+                        <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div>
+                        <span className="text-sm font-medium text-indigo-700">Lost & Found Management</span>
+                    </motion.div>
+
+                    {/* Heading */}
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-6 tracking-tight leading-[1.1]">
+                        Never lose track of
+                        <br />
+                        <span className="text-indigo-600">your belongings</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-                        Your central hub for managing lost and found items. Report, track, and reclaim your belongings with ease.
+
+                    {/* Subheading */}
+                    <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+                        A simple, efficient system to report, track, and reclaim lost items.
+                        Built for organizations that care about their people.
                     </p>
 
-                    {/* Main Action Cards */}
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16">
-                        {/* Report Lost Item Card */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.2, type: "spring" }}
-                        >
-                            <Link to="/report-lost">
-                                <Card className="h-full hover:shadow-[#7C5DFA]/20 bg-gradient-to-br from-white to-[#E0D7FF]/30">
-                                    <div className="flex flex-col items-center text-center p-8">
-                                        <div className="w-20 h-20 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center mb-6 shadow-xl">
-                                            <AlertCircle className="text-white" size={40} />
-                                        </div>
-                                        <h3 className="text-2xl font-bold text-[#2B1B60] mb-4">
-                                            Report Lost Item
-                                        </h3>
-                                        <p className="text-gray-600 mb-6">
-                                            Lost something? Let us help you find it. Report your missing item and we'll notify you if it's found.
-                                        </p>
-                                        <Button variant="primary" icon={ArrowRight}>
-                                            Report Now
-                                        </Button>
-                                    </div>
-                                </Card>
-                            </Link>
-                        </motion.div>
-
-                        {/* Report Found Item Card */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3, type: "spring" }}
-                        >
-                            <Link to="/report-found">
-                                <Card className="h-full hover:shadow-[#FFD233]/20 bg-gradient-to-br from-white to-[#FFD233]/20">
-                                    <div className="flex flex-col items-center text-center p-8">
-                                        <div className="w-20 h-20 bg-gradient-to-br from-[#FFD233] to-[#ffc700] rounded-3xl flex items-center justify-center mb-6 shadow-xl">
-                                            <Search className="text-[#2B1B60]" size={40} />
-                                        </div>
-                                        <h3 className="text-2xl font-bold text-[#2B1B60] mb-4">
-                                            Report Found Item
-                                        </h3>
-                                        <p className="text-gray-600 mb-6">
-                                            Found something? Help reunite it with its owner. Report the item you found here.
-                                        </p>
-                                        <Button variant="secondary" icon={ArrowRight}>
-                                            Report Now
-                                        </Button>
-                                    </div>
-                                </Card>
-                            </Link>
-                        </motion.div>
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+                        <Link to="/report-lost">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium shadow-sm hover:bg-indigo-700 hover:shadow-md flex items-center gap-2 transition-all"
+                            >
+                                <AlertCircle size={18} />
+                                Report Lost Item
+                                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                            </motion.button>
+                        </Link>
+                        <Link to="/report-found">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group px-6 py-3 bg-white text-gray-700 border border-gray-200 rounded-lg font-medium hover:border-gray-300 hover:shadow-sm flex items-center gap-2 transition-all"
+                            >
+                                <Search size={18} />
+                                Report Found Item
+                                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                            </motion.button>
+                        </Link>
                     </div>
+
+                    {/* Stats */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t border-gray-100"
+                    >
+                        {[
+                            { label: 'Items Recovered', value: '1,247' },
+                            { label: 'Active Users', value: '3,891' },
+                            { label: 'Avg. Recovery Time', value: '2.3 days' }
+                        ].map((stat, index) => (
+                            <div key={index} className="text-center">
+                                <div className="text-2xl md:text-3xl font-semibold text-gray-900 mb-1">{stat.value}</div>
+                                <div className="text-sm text-gray-500">{stat.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
                 </motion.div>
             </section>
 
-            {/* Features Section */}
-            <section className="py-24">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* How It Works */}
+            <section className="relative py-24 bg-gray-50">
+                <div className="max-w-6xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-20"
+                        transition={{ duration: 0.5 }}
+                        className="text-center mb-16"
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E0D7FF] rounded-full mb-6">
-                            <Sparkles className="text-[#7C5DFA]" size={18} />
-                            <span className="text-sm font-semibold text-[#7C5DFA]">How It Works</span>
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#2B1B60] mb-6">
-                            Simple, Efficient, Secure
+                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+                            How it works
                         </h2>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            Three easy steps to reunite you with your belongings
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Three simple steps to reunite you with your belongings
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-8 mb-20">
+                    <div className="grid md:grid-cols-3 gap-8">
                         {[
                             {
-                                title: "Report Items",
-                                description: "Quickly report lost or found items with detailed descriptions and photos. Our intuitive form makes it easy.",
+                                step: '01',
+                                title: 'Report',
+                                description: 'Submit a detailed report with photos and descriptions of your lost or found item.',
                                 icon: FileText,
-                                gradient: "from-[#7C5DFA] to-[#6a4de0]",
-                                bgGradient: "from-[#E0D7FF]/50 to-[#E0D7FF]/20"
+                                color: 'indigo'
                             },
                             {
-                                title: "Track & Match",
-                                description: "Our intelligent system automatically matches lost items with found items, notifying you instantly.",
+                                step: '02',
+                                title: 'Match',
+                                description: 'Our system automatically matches lost items with found items and notifies you.',
                                 icon: Target,
-                                gradient: "from-[#FFD233] to-[#ffc700]",
-                                bgGradient: "from-[#FFD233]/30 to-[#FFD233]/10"
+                                color: 'violet'
                             },
                             {
-                                title: "Claim & Retrieve",
-                                description: "Verify ownership securely with OTP verification and reclaim your items with complete peace of mind.",
+                                step: '03',
+                                title: 'Reclaim',
+                                description: 'Verify ownership through secure OTP verification and retrieve your item.',
                                 icon: CheckCircle,
-                                gradient: "from-[#10b981] to-[#059669]",
-                                bgGradient: "from-green-100/50 to-green-50/20"
+                                color: 'purple'
+                            }
+                        ].map((item, index) => {
+                            const Icon = item.icon;
+                            return (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                                    className="relative"
+                                >
+                                    <div className="bg-white rounded-xl p-8 border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all h-full">
+                                        {/* Step number */}
+                                        <div className="text-sm font-semibold text-gray-400 mb-4">{item.step}</div>
+
+                                        {/* Icon */}
+                                        <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                                            <Icon className="text-indigo-600" size={24} />
+                                        </div>
+
+                                        {/* Content */}
+                                        <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-gray-600 leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            {/* Features */}
+            <section className="py-24 bg-white">
+                <div className="max-w-6xl mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+                            Built for reliability
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Everything you need to manage lost and found items efficiently
+                        </p>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            {
+                                icon: Shield,
+                                title: 'Secure & Private',
+                                description: 'Enterprise-grade security to protect your data and ensure privacy.'
+                            },
+                            {
+                                icon: Zap,
+                                title: 'Instant Notifications',
+                                description: 'Get notified immediately when your lost item is found.'
+                            },
+                            {
+                                icon: Clock,
+                                title: 'Fast Recovery',
+                                description: 'Average recovery time of 2.3 days with our smart matching system.'
                             }
                         ].map((feature, index) => {
                             const Icon = feature.icon;
                             return (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, y: 30 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.15, duration: 0.7, type: "spring" }}
+                                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                                    className="text-center"
                                 >
-                                    <motion.div
-                                        whileHover={{ y: -8 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                        className={`relative h-full bg-gradient-to-br ${feature.bgGradient} backdrop-blur-sm rounded-3xl p-8 border-2 border-white shadow-xl hover:shadow-2xl transition-shadow duration-300`}
-                                    >
-                                        {/* Step Number */}
-                                        <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center border-2 border-gray-100">
-                                            <span className="text-xl font-bold text-[#2B1B60]">{index + 1}</span>
-                                        </div>
-
-                                        {/* Icon */}
-                                        <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
-                                            <Icon className="text-white" size={32} />
-                                        </div>
-
-                                        {/* Content */}
-                                        <h3 className="text-2xl font-bold text-[#2B1B60] mb-4">
-                                            {feature.title}
-                                        </h3>
-                                        <p className="text-gray-600 leading-relaxed">
-                                            {feature.description}
-                                        </p>
-                                    </motion.div>
+                                    <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                        <Icon className="text-gray-700" size={24} />
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        {feature.description}
+                                    </p>
                                 </motion.div>
                             );
                         })}
                     </div>
+                </div>
+            </section>
 
-                    {/* Why Choose AssetHub Section */}
+            {/* CTA Section */}
+            <section className="py-24 bg-gray-50">
+                <div className="max-w-4xl mx-auto px-6 text-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                        className="bg-gradient-to-br from-[#2B1B60] to-[#1a0f3d] rounded-[3rem] p-12 md:p-16 text-white relative overflow-hidden"
+                        transition={{ duration: 0.5 }}
                     >
-                        {/* Background decoration */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#7C5DFA] rounded-full blur-3xl opacity-20"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFD233] rounded-full blur-3xl opacity-10"></div>
-
-                        <div className="relative z-10">
-                            <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                                    Why Choose AssetHub?
-                                </h2>
-                                <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                                    Built with security, efficiency, and user experience in mind
-                                </p>
-                            </div>
-
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {[
-                                    {
-                                        icon: Shield,
-                                        title: "Secure & Private",
-                                        description: "Your data is protected with enterprise-grade security"
-                                    },
-                                    {
-                                        icon: Zap,
-                                        title: "Lightning Fast",
-                                        description: "Instant notifications when your items are found"
-                                    },
-                                    {
-                                        icon: Sparkles,
-                                        title: "Smart Matching",
-                                        description: "AI-powered system to match lost and found items"
-                                    }
-                                ].map((item, index) => {
-                                    const Icon = item.icon;
-                                    return (
-                                        <motion.div
-                                            key={index}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                                            className="text-center"
-                                        >
-                                            <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/20">
-                                                <Icon className="text-[#FFD233]" size={28} />
-                                            </div>
-                                            <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                                            <p className="text-gray-300 text-sm">{item.description}</p>
-                                        </motion.div>
-                                    );
-                                })}
-                            </div>
+                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+                            Ready to get started?
+                        </h2>
+                        <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                            Join thousands of users who trust AssetHub to keep track of their belongings.
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <Link to="/warehouse">
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium shadow-sm hover:bg-indigo-700 hover:shadow-md transition-all"
+                                >
+                                    Browse Warehouse
+                                </motion.button>
+                            </Link>
+                            <Link to="/my-items">
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 bg-white text-gray-700 border border-gray-200 rounded-lg font-medium hover:border-gray-300 hover:shadow-sm transition-all"
+                                >
+                                    View My Items
+                                </motion.button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>
@@ -230,3 +268,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

@@ -67,8 +67,8 @@ const WarehouseItems = () => {
                             key={f.value}
                             onClick={() => setFilter(f.value)}
                             className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === f.value
-                                    ? 'bg-[#7C5DFA] text-white shadow-lg'
-                                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                                ? 'bg-[#7C5DFA] text-white shadow-lg'
+                                : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                                 }`}
                         >
                             {f.label}

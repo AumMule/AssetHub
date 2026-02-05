@@ -11,13 +11,13 @@ const Input = ({
     rows = 4,
     ...props
 }) => {
-    const baseInputStyles = "w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-[#7C5DFA] focus:outline-none transition-all duration-300 text-[#2B1B60] placeholder-gray-400";
+    const baseInputStyles = "w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-50 focus:outline-none transition-all duration-200 text-gray-900 placeholder-gray-400 text-sm";
 
     return (
         <div className={`flex flex-col gap-2 ${className}`}>
             {label && (
-                <label htmlFor={name} className="text-sm font-semibold text-[#2B1B60]">
-                    {label} {required && <span className="text-red-500">*</span>}
+                <label htmlFor={name} className="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">
+                    {label} {required && <span className="text-rose-500">*</span>}
                 </label>
             )}
 

@@ -55,7 +55,7 @@ const ClaimItem = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#E0D7FF] via-white to-white py-12">
+        <div className="min-h-screen bg-gray-50 py-12">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -64,23 +64,23 @@ const ClaimItem = () => {
                 >
                     {/* Header */}
                     <div className="text-center mb-12">
-                        <div className="w-20 h-20 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                            <FileCheck className="text-white" size={40} />
+                        <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                            <FileCheck className="text-indigo-600" size={24} />
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-[#2B1B60] mb-4">
-                            Claim Your Item
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                            Initiate Item Claim
                         </h1>
                         <p className="text-lg text-gray-600">
-                            Verify your identity to claim your item
+                            Verify your identity to recover your lost belonging
                         </p>
                     </div>
 
                     {/* Form */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                        className="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 border-2 border-gray-100"
+                        transition={{ delay: 0.1, duration: 0.5 }}
+                        className="bg-white rounded-2xl shadow-sm p-8 md:p-10 border border-gray-100"
                     >
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <Input
@@ -122,9 +122,10 @@ const ClaimItem = () => {
                             />
 
                             <div className="pt-4 pb-2">
-                                <div className="bg-[#E0D7FF] rounded-2xl p-4 mb-4">
-                                    <p className="text-sm text-[#2B1B60] font-medium">
-                                        📱 For demo purposes, use OTP: <strong>123456</strong>
+                                <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4 mb-4">
+                                    <p className="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-1">Demo Credentials</p>
+                                    <p className="text-sm text-indigo-600">
+                                        For testing purposes, please use OTP: <span className="font-bold">123456</span>
                                     </p>
                                 </div>
 

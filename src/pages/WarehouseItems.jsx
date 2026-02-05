@@ -40,15 +40,15 @@ const WarehouseItems = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-12"
                 >
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <Package className="text-white" size={40} />
+                    <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <Package className="text-indigo-600" size={24} />
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#2B1B60] mb-4">
-                        Warehouse Items
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                        Warehouse Asset Directory
                     </h1>
                     <p className="text-lg text-gray-600">
                         Browse all items in our system
@@ -57,18 +57,18 @@ const WarehouseItems = () => {
 
                 {/* Filters */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="flex flex-wrap justify-center gap-3 mb-12"
+                    className="flex flex-wrap justify-center gap-2 mb-12"
                 >
                     {filters.map((f) => (
                         <button
                             key={f.value}
                             onClick={() => setFilter(f.value)}
-                            className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === f.value
-                                ? 'bg-[#7C5DFA] text-white shadow-lg'
-                                : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                            className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${filter === f.value
+                                ? 'bg-indigo-600 text-white shadow-sm'
+                                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
                                 }`}
                         >
                             {f.label}
@@ -79,8 +79,8 @@ const WarehouseItems = () => {
                 {/* Items Grid */}
                 {loading ? (
                     <div className="text-center py-20">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#7C5DFA] border-t-transparent"></div>
-                        <p className="mt-4 text-gray-600">Loading items...</p>
+                        <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                        <p className="mt-4 text-gray-600 text-sm">Loading assets...</p>
                     </div>
                 ) : items.length === 0 ? (
                     <div className="text-center py-20">
@@ -111,7 +111,7 @@ const WarehouseItems = () => {
                                             <Badge status={item.status} />
                                         </div>
 
-                                        <h3 className="text-lg font-bold text-[#2B1B60] mb-2">
+                                        <h3 className="text-lg font-bold text-gray-900 mb-2">
                                             {item.name}
                                         </h3>
 

@@ -38,17 +38,17 @@ const BorrowRecords = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-12"
                 >
                     <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center shadow-xl">
-                            <ShoppingBag className="text-white" size={32} />
+                        <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center">
+                            <ShoppingBag className="text-indigo-600" size={24} />
                         </div>
                         <div>
-                            <h1 className="text-4xl font-bold text-[#2B1B60]">Borrow Records</h1>
-                            <p className="text-gray-600">Track all borrowed items and overdue returns</p>
+                            <h1 className="text-3xl font-bold text-gray-900">Borrowing Ledger</h1>
+                            <p className="text-sm text-gray-600">Complete historical record of asset transactions</p>
                         </div>
                     </div>
                 </motion.div>
@@ -64,9 +64,9 @@ const BorrowRecords = () => {
                         <button
                             key={f.value}
                             onClick={() => setFilter(f.value)}
-                            className={`px-6 py-3 rounded-full font-semibold transition-all ${filter === f.value
-                                    ? 'bg-[#7C5DFA] text-white shadow-lg'
-                                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                            className={`px-5 py-2 rounded-xl text-sm font-bold transition-all ${filter === f.value
+                                ? 'bg-indigo-600 text-white shadow-md'
+                                : 'bg-white text-gray-500 hover:bg-gray-50 border border-gray-200'
                                 }`}
                         >
                             {f.label}
@@ -77,8 +77,8 @@ const BorrowRecords = () => {
                 {/* Records Table */}
                 {loading ? (
                     <div className="text-center py-20">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#7C5DFA] border-t-transparent"></div>
-                        <p className="mt-4 text-gray-600">Loading records...</p>
+                        <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                        <p className="mt-4 text-gray-600 text-sm">Querying transaction database...</p>
                     </div>
                 ) : records.length === 0 ? (
                     <Card hoverable={false} className="text-center py-20">
@@ -95,11 +95,11 @@ const BorrowRecords = () => {
                                 <table className="w-full">
                                     <thead className="bg-gray-50">
                                         <tr>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Item</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Borrower</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Borrow Date</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Due Date</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Status</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Asset Name</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Borrower Identity</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Checkout Date</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Expected Return</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Current Status</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-100">
@@ -110,7 +110,7 @@ const BorrowRecords = () => {
                                                     }`}
                                             >
                                                 <td className="px-6 py-4">
-                                                    <span className="font-medium text-[#2B1B60]">{record.itemName}</span>
+                                                    <span className="font-bold text-gray-900 text-sm">{record.itemName}</span>
                                                 </td>
                                                 <td className="px-6 py-4 text-sm text-gray-600">
                                                     {record.userName}

@@ -26,11 +26,11 @@ const Modal = ({
                     {/* Modal */}
                     <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            initial={{ opacity: 0, scale: 0.95, y: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                            className={`bg-white rounded-[2rem] shadow-2xl max-w-md w-full p-8 relative ${className}`}
+                            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                            transition={{ duration: 0.2 }}
+                            className={`bg-white rounded-2xl shadow-xl max-w-md w-full p-8 relative border border-gray-100 ${className}`}
                         >
                             {showCloseButton && (
                                 <button
@@ -42,7 +42,7 @@ const Modal = ({
                             )}
 
                             {title && (
-                                <h2 className="text-2xl font-bold text-[#2B1B60] mb-4">
+                                <h2 className="text-xl font-bold text-gray-900 mb-2">
                                     {title}
                                 </h2>
                             )}

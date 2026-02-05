@@ -7,21 +7,24 @@ const Card = ({
     hoverable = true,
     ...props
 }) => {
-    const baseStyles = "bg-white rounded-[2rem] border-2 border-gray-100 shadow-2xl shadow-black/5 p-6 transition-all duration-300";
+    const baseStyles = "bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-200";
 
     const motionProps = hoverable ? {
-        whileHover: { scale: 1.05, y: -5 },
-        transition: { type: "spring", stiffness: 300, damping: 20 }
-    } : {};
+        whileHover: { y: -2 },
+        className: `${baseStyles} hover:shadow-md hover:border-gray-200 ${onClick ? 'cursor-pointer' : ''} ${className}`
+    } : {
+        className: `${baseStyles} ${className}`
+    };
 
     return (
         <motion.div
-            className={`${baseStyles} ${onClick ? 'cursor-pointer' : ''} ${className}`}
             onClick={onClick}
             {...motionProps}
             {...props}
         >
-            {children}
+            <div className="p-5 h-full flex flex-col">
+                {children}
+            </div>
         </motion.div>
     );
 };

@@ -43,8 +43,8 @@ const FileUpload = ({
     return (
         <div className={`flex flex-col gap-2 ${className}`}>
             {label && (
-                <label className="text-sm font-semibold text-[#2B1B60]">
-                    {label} {required && <span className="text-red-500">*</span>}
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">
+                    {label} {required && <span className="text-rose-500">*</span>}
                 </label>
             )}
 
@@ -52,11 +52,11 @@ const FileUpload = ({
                 {!preview ? (
                     <label
                         htmlFor={name}
-                        className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors"
+                        className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-200 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-indigo-300 transition-all group"
                     >
                         <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <Upload className="w-12 h-12 mb-3 text-gray-400" />
-                            <p className="mb-2 text-sm text-gray-500">
+                            <Upload className="w-8 h-8 mb-3 text-gray-400 group-hover:text-indigo-500 transition-colors" />
+                            <p className="mb-1 text-sm text-gray-500">
                                 <span className="font-semibold">Click to upload</span> or drag and drop
                             </p>
                             <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
@@ -72,7 +72,7 @@ const FileUpload = ({
                         />
                     </label>
                 ) : (
-                    <div className="relative w-full h-48 rounded-2xl overflow-hidden border-2 border-gray-200">
+                    <div className="relative w-full h-40 rounded-xl overflow-hidden border border-gray-200">
                         <img
                             src={preview}
                             alt="Preview"
@@ -81,9 +81,9 @@ const FileUpload = ({
                         <button
                             type="button"
                             onClick={clearFile}
-                            className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
+                            className="absolute top-2 right-2 bg-rose-500 text-white p-2 rounded-lg hover:bg-rose-600 shadow-lg transition-colors"
                         >
-                            <X size={16} />
+                            <X size={14} />
                         </button>
                     </div>
                 )}

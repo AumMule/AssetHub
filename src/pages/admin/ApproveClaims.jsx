@@ -44,17 +44,17 @@ const ApproveClaims = () => {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-12"
                 >
                     <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-[#FFD233] to-[#ffc700] rounded-3xl flex items-center justify-center shadow-xl">
-                            <FileCheck className="text-[#2B1B60]" size={32} />
+                        <div className="w-12 h-12 bg-amber-50 border border-amber-100 rounded-xl flex items-center justify-center">
+                            <FileCheck className="text-amber-600" size={24} />
                         </div>
                         <div>
-                            <h1 className="text-4xl font-bold text-[#2B1B60]">Approve Claims</h1>
-                            <p className="text-gray-600">Review and approve item claims</p>
+                            <h1 className="text-3xl font-bold text-gray-900">Verification Queue</h1>
+                            <p className="text-sm text-gray-600">Review and authorize asset recovery claims</p>
                         </div>
                     </div>
                 </motion.div>
@@ -62,8 +62,8 @@ const ApproveClaims = () => {
                 {/* Claims List */}
                 {loading ? (
                     <div className="text-center py-20">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#7C5DFA] border-t-transparent"></div>
-                        <p className="mt-4 text-gray-600">Loading claims...</p>
+                        <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                        <p className="mt-4 text-gray-600 text-sm">Validating claim submissions...</p>
                     </div>
                 ) : claims.length === 0 ? (
                     <Card hoverable={false} className="text-center py-20">
@@ -85,10 +85,10 @@ const ApproveClaims = () => {
                                         <div className="flex-1">
                                             <div className="flex items-start justify-between mb-4">
                                                 <div>
-                                                    <h3 className="text-xl font-bold text-[#2B1B60] mb-2">
+                                                    <h3 className="text-lg font-bold text-gray-900 mb-2">
                                                         {claim.itemName}
                                                     </h3>
-                                                    <Badge status="pending" />
+                                                    <Badge status="pending" className="scale-75 origin-left" />
                                                 </div>
                                             </div>
 
@@ -109,19 +109,18 @@ const ApproveClaims = () => {
                                                     setSelectedClaim(claim);
                                                     setShowDetailsModal(true);
                                                 }}
-                                                className="text-[#7C5DFA] text-sm font-semibold hover:underline"
+                                                className="text-indigo-600 text-xs font-bold uppercase tracking-wider hover:text-indigo-700 transition-colors"
                                             >
-                                                View Full Details →
+                                                Review Evidence →
                                             </button>
                                         </div>
 
-                                        {/* Actions */}
-                                        <div className="flex md:flex-col gap-3 md:w-40">
+                                        <div className="flex md:flex-col gap-3 md:w-32">
                                             <Button
                                                 variant="primary"
                                                 icon={Check}
                                                 onClick={() => handleApprove(claim.id)}
-                                                className="flex-1 bg-green-500 hover:bg-green-600"
+                                                className="flex-1 bg-emerald-600 hover:bg-emerald-700"
                                             >
                                                 Approve
                                             </Button>
@@ -129,9 +128,9 @@ const ApproveClaims = () => {
                                                 variant="outline"
                                                 icon={X}
                                                 onClick={() => handleDeny(claim.id)}
-                                                className="flex-1 border-red-500 text-red-500 hover:bg-red-50"
+                                                className="flex-1 border-rose-200 text-rose-600 hover:bg-rose-50"
                                             >
-                                                Deny
+                                                Reject
                                             </Button>
                                         </div>
                                     </div>

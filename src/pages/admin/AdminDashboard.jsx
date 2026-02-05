@@ -37,18 +37,18 @@ const AdminDashboard = () => {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#7C5DFA] border-t-transparent"></div>
-                    <p className="mt-4 text-gray-600">Loading dashboard...</p>
+                    <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                    <p className="mt-4 text-gray-600 text-sm">Accessing admin systems...</p>
                 </div>
             </div>
         );
     }
 
     const statCards = [
-        { label: 'Total Items', value: stats?.totalItems || 0, icon: Package, color: 'from-blue-500 to-blue-600' },
-        { label: 'Lost Items', value: stats?.lostItems || 0, icon: AlertTriangle, color: 'from-red-500 to-red-600' },
-        { label: 'Pending Claims', value: stats?.pendingClaims || 0, icon: FileCheck, color: 'from-yellow-500 to-yellow-600' },
-        { label: 'Overdue Borrows', value: stats?.overdueItems || 0, icon: TrendingUp, color: 'from-purple-500 to-purple-600' }
+        { label: 'Total Assets', value: stats?.totalItems || 0, icon: Package, color: 'text-blue-600', bgColor: 'bg-blue-50', borderColor: 'border-blue-100' },
+        { label: 'Lost Reports', value: stats?.lostItems || 0, icon: AlertTriangle, color: 'text-rose-600', bgColor: 'bg-rose-50', borderColor: 'border-rose-100' },
+        { label: 'Pending Claims', value: stats?.pendingClaims || 0, icon: FileCheck, color: 'text-emerald-600', bgColor: 'bg-emerald-50', borderColor: 'border-emerald-100' },
+        { label: 'Overdue Cycles', value: stats?.overdueItems || 0, icon: TrendingUp, color: 'text-indigo-600', bgColor: 'bg-indigo-50', borderColor: 'border-indigo-100' }
     ];
 
     return (
@@ -56,17 +56,17 @@ const AdminDashboard = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-12"
                 >
                     <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center shadow-xl">
-                            <LayoutDashboard className="text-white" size={32} />
+                        <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center">
+                            <LayoutDashboard className="text-indigo-600" size={24} />
                         </div>
                         <div>
-                            <h1 className="text-4xl font-bold text-[#2B1B60]">Admin Dashboard</h1>
-                            <p className="text-gray-600">Overview of AssetHub system</p>
+                            <h1 className="text-3xl font-bold text-gray-900">Admin Overview</h1>
+                            <p className="text-sm text-gray-600">Real-time metrics for AssetHub system</p>
                         </div>
                     </div>
                 </motion.div>
@@ -82,14 +82,13 @@ const AdminDashboard = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                             >
-                                <Card hoverable={false} className="relative overflow-hidden">
-                                    <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${stat.color} opacity-10 rounded-full -mr-8 -mt-8`}></div>
+                                <Card hoverable={false} className={`border ${stat.borderColor} ${stat.bgColor}/50`}>
                                     <div className="relative">
-                                        <div className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mb-4`}>
-                                            <Icon className="text-white" size={24} />
+                                        <div className={`w-10 h-10 ${stat.bgColor} border ${stat.borderColor} rounded-lg flex items-center justify-center mb-4`}>
+                                            <Icon className={stat.color} size={20} />
                                         </div>
-                                        <p className="text-gray-600 text-sm mb-1">{stat.label}</p>
-                                        <p className="text-3xl font-bold text-[#2B1B60]">{stat.value}</p>
+                                        <p className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">{stat.label}</p>
+                                        <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
                                     </div>
                                 </Card>
                             </motion.div>
@@ -100,11 +99,11 @@ const AdminDashboard = () => {
                 <div className="grid lg:grid-cols-2 gap-8">
                     {/* Recent Items */}
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4 }}
+                        transition={{ delay: 0.2 }}
                     >
-                        <h2 className="text-2xl font-bold text-[#2B1B60] mb-6">Recent Items</h2>
+                        <h2 className="text-xl font-bold text-gray-900 mb-6 uppercase tracking-tight">Recent Activity</h2>
                         <div className="space-y-4">
                             {recentItems.map((item) => (
                                 <Card key={item.id} hoverable={false}>
@@ -114,10 +113,10 @@ const AdminDashboard = () => {
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2 mb-1">
-                                                <h3 className="font-semibold text-[#2B1B60] truncate">{item.name}</h3>
-                                                <Badge status={item.status} />
+                                                <h3 className="font-bold text-gray-900 truncate text-sm">{item.name}</h3>
+                                                <Badge status={item.status} className="scale-75 origin-left" />
                                             </div>
-                                            <p className="text-sm text-gray-500 truncate">{item.location}</p>
+                                            <p className="text-xs text-gray-500 truncate lowercase tracking-tight">📍 {item.location}</p>
                                         </div>
                                     </div>
                                 </Card>
@@ -139,14 +138,14 @@ const AdminDashboard = () => {
                                 </Card>
                             ) : (
                                 pendingClaims.map((claim) => (
-                                    <Card key={claim.id} hoverable={false}>
+                                    <Card key={claim.id} hoverable={true}>
                                         <div className="flex items-center justify-between">
                                             <div className="flex-1">
-                                                <h3 className="font-semibold text-[#2B1B60] mb-1">{claim.itemName}</h3>
-                                                <p className="text-sm text-gray-600 mb-2">Claimed by: {claim.userName}</p>
-                                                <Badge status="pending" />
+                                                <h3 className="font-bold text-gray-900 mb-1 text-sm">{claim.itemName}</h3>
+                                                <p className="text-xs text-gray-600 mb-2">Claimant: {claim.userName}</p>
+                                                <Badge status="pending" className="scale-75 origin-left" />
                                             </div>
-                                            <FileCheck className="text-[#FFD233]" size={24} />
+                                            <FileCheck className="text-amber-500" size={20} />
                                         </div>
                                     </Card>
                                 ))

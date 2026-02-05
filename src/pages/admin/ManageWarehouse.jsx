@@ -57,12 +57,12 @@ const ManageWarehouse = () => {
                 >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <div className="flex items-center gap-4">
-                            <div className="w-16 h-16 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center shadow-xl">
-                                <Package className="text-white" size={32} />
+                            <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center">
+                                <Package className="text-indigo-600" size={24} />
                             </div>
                             <div>
-                                <h1 className="text-4xl font-bold text-[#2B1B60]">Manage Warehouse</h1>
-                                <p className="text-gray-600">Add, edit, or remove warehouse items</p>
+                                <h1 className="text-3xl font-bold text-gray-900">Warehouse Inventory</h1>
+                                <p className="text-sm text-gray-600">Administrative control of stored assets</p>
                             </div>
                         </div>
                         <Button
@@ -92,8 +92,8 @@ const ManageWarehouse = () => {
                 {/* Items Table */}
                 {loading ? (
                     <div className="text-center py-20">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#7C5DFA] border-t-transparent"></div>
-                        <p className="mt-4 text-gray-600">Loading items...</p>
+                        <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                        <p className="mt-4 text-gray-600 text-sm">Loading inventory data...</p>
                     </div>
                 ) : (
                     <motion.div
@@ -106,11 +106,11 @@ const ManageWarehouse = () => {
                                 <table className="w-full">
                                     <thead className="bg-gray-50">
                                         <tr>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Item</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Description</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Location</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Status</th>
-                                            <th className="px-6 py-4 text-left text-sm font-semibold text-[#2B1B60]">Actions</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Asset Details</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Full Description</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Storage Location</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Current Status</th>
+                                            <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest">Management</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-100">
@@ -118,10 +118,10 @@ const ManageWarehouse = () => {
                                             <tr key={item.id} className="hover:bg-gray-50 transition-colors">
                                                 <td className="px-6 py-4">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-12 h-12 rounded-xl overflow-hidden bg-gray-100">
+                                                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
                                                             <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                                         </div>
-                                                        <span className="font-medium text-[#2B1B60]">{item.name}</span>
+                                                        <span className="font-bold text-gray-900 text-sm">{item.name}</span>
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
@@ -192,11 +192,11 @@ const ManageWarehouse = () => {
                             Cancel
                         </Button>
                         <Button
-                            variant="primary"
+                            variant="danger"
                             onClick={handleDelete}
-                            className="flex-1 bg-red-500 hover:bg-red-600"
+                            className="flex-1"
                         >
-                            Delete
+                            Delete Item
                         </Button>
                     </div>
                 </div>

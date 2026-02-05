@@ -40,7 +40,7 @@ const MyItems = () => {
                 {/* Content */}
                 <div className="flex-1">
                     <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-lg font-bold text-[#2B1B60]">
+                        <h3 className="text-lg font-bold text-gray-900">
                             {item.name || item.itemName}
                         </h3>
                         <Badge status={item.status} />
@@ -68,8 +68,8 @@ const MyItems = () => {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#7C5DFA] border-t-transparent"></div>
-                    <p className="mt-4 text-gray-600">Loading your items...</p>
+                    <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                    <p className="mt-4 text-gray-600 text-sm">Synchronizing your assets...</p>
                 </div>
             </div>
         );
@@ -80,15 +80,15 @@ const MyItems = () => {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-12"
                 >
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <User className="text-white" size={40} />
+                    <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <User className="text-indigo-600" size={24} />
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#2B1B60] mb-4">
-                        My Items
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                        My Asset Dashboard
                     </h1>
                     <p className="text-lg text-gray-600">
                         Manage your lost, found, and borrowed items
@@ -103,9 +103,9 @@ const MyItems = () => {
                     className="mb-12"
                 >
                     <div className="flex items-center gap-3 mb-6">
-                        <AlertCircle className="text-[#7C5DFA]" size={28} />
-                        <h2 className="text-2xl font-bold text-[#2B1B60]">My Lost Items</h2>
-                        <span className="px-3 py-1 bg-[#7C5DFA] text-white rounded-full text-sm font-semibold">
+                        <AlertCircle className="text-rose-600" size={24} />
+                        <h2 className="text-xl font-bold text-gray-900 uppercase tracking-tight">Reported Lost</h2>
+                        <span className="px-2.5 py-0.5 bg-rose-50 text-rose-700 border border-rose-100 rounded-lg text-xs font-bold">
                             {myItems.lost.length}
                         </span>
                     </div>
@@ -131,9 +131,9 @@ const MyItems = () => {
                     className="mb-12"
                 >
                     <div className="flex items-center gap-3 mb-6">
-                        <Package className="text-[#FFD233]" size={28} />
-                        <h2 className="text-2xl font-bold text-[#2B1B60]">My Found Items</h2>
-                        <span className="px-3 py-1 bg-[#FFD233] text-[#2B1B60] rounded-full text-sm font-semibold">
+                        <Package className="text-emerald-600" size={24} />
+                        <h2 className="text-xl font-bold text-gray-900 uppercase tracking-tight">Reported Found</h2>
+                        <span className="px-2.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-lg text-xs font-bold">
                             {myItems.found.length}
                         </span>
                     </div>
@@ -158,9 +158,9 @@ const MyItems = () => {
                     transition={{ delay: 0.3 }}
                 >
                     <div className="flex items-center gap-3 mb-6">
-                        <ShoppingBag className="text-[#7C5DFA]" size={28} />
-                        <h2 className="text-2xl font-bold text-[#2B1B60]">My Borrowed Items</h2>
-                        <span className="px-3 py-1 bg-[#7C5DFA] text-white rounded-full text-sm font-semibold">
+                        <ShoppingBag className="text-indigo-600" size={24} />
+                        <h2 className="text-xl font-bold text-gray-900 uppercase tracking-tight">Active Borrows</h2>
+                        <span className="px-2.5 py-0.5 bg-indigo-50 text-indigo-700 border border-indigo-100 rounded-lg text-xs font-bold">
                             {myItems.borrowed.length}
                         </span>
                     </div>

@@ -102,15 +102,15 @@ const BorrowableItems = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-12"
                 >
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#7C5DFA] to-[#6a4de0] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <ShoppingBag className="text-white" size={40} />
+                    <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <ShoppingBag className="text-indigo-600" size={24} />
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#2B1B60] mb-4">
-                        Borrowable Items
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                        Borrowable Assets
                     </h1>
                     <p className="text-lg text-gray-600">
                         Items available for temporary borrowing
@@ -120,8 +120,8 @@ const BorrowableItems = () => {
                 {/* Items Grid */}
                 {loading ? (
                     <div className="text-center py-20">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#7C5DFA] border-t-transparent"></div>
-                        <p className="mt-4 text-gray-600">Loading items...</p>
+                        <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                        <p className="mt-4 text-gray-600 text-sm">Searching available assets...</p>
                     </div>
                 ) : items.length === 0 ? (
                     <div className="text-center py-20">
@@ -157,7 +157,7 @@ const BorrowableItems = () => {
                                             )}
                                         </div>
 
-                                        <h3 className="text-lg font-bold text-[#2B1B60] mb-2">
+                                        <h3 className="text-lg font-bold text-gray-900 mb-2">
                                             {item.name}
                                         </h3>
 
@@ -198,9 +198,9 @@ const BorrowableItems = () => {
                 {selectedItem && (
                     <div className="py-4">
                         {/* Item Info */}
-                        <div className="mb-6 p-4 bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl">
-                            <p className="text-sm text-gray-600 mb-1">Borrowing:</p>
-                            <p className="text-lg font-bold text-[#2B1B60]">{selectedItem.name}</p>
+                        <div className="mb-6 p-4 bg-gray-50 border border-gray-100 rounded-2xl">
+                            <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wider">Borrowing Asset</p>
+                            <p className="text-lg font-bold text-gray-900">{selectedItem.name}</p>
                         </div>
 
                         {/* Form Step */}
@@ -280,21 +280,21 @@ const BorrowableItems = () => {
                                 className="space-y-6"
                             >
                                 {/* OTP Sent Message */}
-                                <div className="text-center p-4 bg-green-50 rounded-2xl border-2 border-green-200">
+                                <div className="text-center p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
                                     <div className="flex items-center justify-center gap-2 mb-2">
-                                        <Shield className="text-green-600" size={20} />
-                                        <p className="font-semibold text-green-800">OTP Sent!</p>
+                                        <Shield className="text-emerald-600" size={18} />
+                                        <p className="font-bold text-emerald-800 text-sm uppercase tracking-wider">Identity Verification</p>
                                     </div>
-                                    <p className="text-sm text-green-700">
-                                        We've sent a 6-digit code to<br />
-                                        <strong>{formData.phone}</strong>
+                                    <p className="text-xs text-emerald-700 leading-relaxed">
+                                        A 6-digit security code has been sent to<br />
+                                        <span className="font-bold">{formData.phone}</span>
                                     </p>
                                 </div>
 
                                 {/* OTP Input */}
                                 <div>
-                                    <label className="block text-sm font-semibold text-[#2B1B60] mb-3 text-center">
-                                        Enter OTP Code
+                                    <label className="block text-xs font-bold text-gray-400 mb-4 text-center uppercase tracking-widest">
+                                        Enter 6-Digit Code
                                     </label>
                                     <div className="flex gap-2 justify-center">
                                         {otp.map((digit, index) => (
@@ -307,7 +307,7 @@ const BorrowableItems = () => {
                                                 value={digit}
                                                 onChange={(e) => handleOtpChange(index, e.target.value)}
                                                 onKeyDown={(e) => handleOtpKeyDown(index, e)}
-                                                className="w-12 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#7C5DFA] focus:outline-none transition-all duration-300 text-[#2B1B60]"
+                                                className="w-12 h-14 text-center text-2xl font-bold border border-gray-200 rounded-xl focus:border-indigo-600 focus:ring-4 focus:ring-indigo-50 focus:outline-none transition-all duration-200 text-gray-900"
                                             />
                                         ))}
                                     </div>
@@ -317,9 +317,9 @@ const BorrowableItems = () => {
                                 <div className="text-center">
                                     <button
                                         type="button"
-                                        className="text-sm text-[#7C5DFA] hover:text-[#6a4de0] font-medium transition-colors"
+                                        className="text-sm text-indigo-600 hover:text-indigo-700 font-bold transition-colors"
                                     >
-                                        Resend OTP
+                                        Resend Code
                                     </button>
                                 </div>
 
